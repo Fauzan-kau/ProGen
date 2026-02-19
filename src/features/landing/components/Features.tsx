@@ -1,3 +1,5 @@
+'use client';
+
 import { Container, Card } from '@components/ui';
 
 const features = [
@@ -37,7 +39,7 @@ const features = [
     id: 'potential',
     title: 'Potential',
     description:
-      'We unlock each student\'s full potential by combining rigorous academic tuition with strategic career coaching and personalized development.',
+      "We unlock each student's full potential by combining rigorous academic tuition with strategic career coaching and personalized development.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -53,7 +55,7 @@ const features = [
     id: 'strategy',
     title: 'Strategy',
     description:
-      'Education becomes a career strategy. We don\'t just teach subjects — we architect futures with data-driven approaches and proven methodologies.',
+      "Education becomes a career strategy. We don't just teach subjects — we architect futures with data-driven approaches and proven methodologies.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path

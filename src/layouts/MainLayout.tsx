@@ -8,6 +8,7 @@ interface MainLayoutProps {
 const navLinks: NavLink[] = [
   { label: 'Programs', href: '#programs' },
   { label: 'Features', href: '#features' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -15,10 +16,9 @@ const footerSections = [
   {
     title: 'Programs',
     links: [
-      { label: 'Web Development', href: '/programs/web-dev' },
-      { label: 'Data Science', href: '/programs/data-science' },
-      { label: 'Cloud Engineering', href: '/programs/cloud' },
-      { label: 'AI & ML', href: '/programs/ai-ml' },
+      { label: 'Academic Excellence', href: '/programs/academic-excellence' },
+      { label: 'Career Strategy', href: '/programs/career-strategy' },
+      { label: 'Leadership Development', href: '/programs/leadership' },
     ],
   },
   {
@@ -33,7 +33,6 @@ const footerSections = [
   {
     title: 'Resources',
     links: [
-      { label: 'Documentation', href: '/docs' },
       { label: 'Community', href: '/community' },
       { label: 'Support', href: '/support' },
       { label: 'FAQ', href: '/faq' },
@@ -42,14 +41,9 @@ const footerSections = [
 ];
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
-  const handleGetStarted = () => {
-    // Navigate to enrollment or show modal
-    console.log('Get Started clicked');
-  };
-
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar links={navLinks} onCTAClick={handleGetStarted} />
+      <Navbar links={navLinks} />
       <main className="flex-1">{children}</main>
       <Footer sections={footerSections} />
     </div>

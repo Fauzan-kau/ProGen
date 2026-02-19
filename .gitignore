@@ -31,6 +31,7 @@ dist-ssr
 
 # Build output
 build
+.next
 
 # ProGen Brand Identity
 ProGen Brand Identity.pdf

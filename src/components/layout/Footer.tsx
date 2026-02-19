@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { Container } from '@components/ui';
 
 interface FooterLink {
@@ -25,9 +27,11 @@ export const Footer = ({ sections }: FooterProps) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8">
             {/* Brand Column */}
             <div className="col-span-1 md:col-span-2 lg:col-span-1">
-              <img
-                src="/src/assets/images/logo-light-bg.png"
+              <Image
+                src="/images/logo-light-bg.png"
                 alt="ProGen"
+                width={200}
+                height={48}
                 className="h-10 md:h-12 w-auto mb-4"
               />
               <p className="text-text-dark/80 text-sm md:text-base leading-relaxed">
@@ -43,12 +47,21 @@ export const Footer = ({ sections }: FooterProps) => {
                 <ul className="space-y-2">
                   {section.links.map((link) => (
                     <li key={link.href}>
-                      <a
-                        href={link.href}
-                        className="text-text-dark/80 hover:text-brand-red transition-colors text-sm md:text-base"
-                      >
-                        {link.label}
-                      </a>
+                      {link.href.startsWith('/') ? (
+                        <Link
+                          href={link.href}
+                          className="text-text-dark/80 hover:text-brand-red transition-colors text-sm md:text-base"
+                        >
+                          {link.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className="text-text-dark/80 hover:text-brand-red transition-colors text-sm md:text-base"
+                        >
+                          {link.label}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

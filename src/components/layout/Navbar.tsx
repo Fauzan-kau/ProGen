@@ -1,4 +1,8 @@
+'use client';
+
 import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Container } from '@components/ui';
 import { NavLink } from '@/types';
 import { scrollToContact } from '@utils/helpers';
@@ -17,28 +21,41 @@ export const Navbar = ({ links, onCTAClick }: NavbarProps) => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center">
-              <img
-                src="/src/assets/images/logo-primary.png"
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo-primary.png"
                 alt="ProGen"
+                width={160}
+                height={40}
                 className="h-8 md:h-10 w-auto"
+                priority
               />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium"
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) =>
+              link.href.startsWith('/') ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium"
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              )
+            )}
             <button
               onClick={onCTAClick || scrollToContact}
               className="bg-brand-red hover:bg-brand-red-hover text-white px-6 py-2.5 rounded-lg font-semibold transition-all hover:shadow-lg active:scale-95"
@@ -77,18 +94,29 @@ export const Navbar = ({ links, onCTAClick }: NavbarProps) => {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
             <div className="flex flex-col space-y-4">
-              {links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium py-2"
-                  target={link.external ? '_blank' : undefined}
-                  rel={link.external ? 'noopener noreferrer' : undefined}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
+              {links.map((link) =>
+                link.href.startsWith('/') ? (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium py-2"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium py-2"
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
               <button
                 onClick={() => {
                   (onCTAClick || scrollToContact)();

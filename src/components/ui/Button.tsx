@@ -1,3 +1,5 @@
+'use client';
+
 import { ButtonProps } from '@/types';
 
 const variantStyles = {

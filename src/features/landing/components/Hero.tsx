@@ -1,3 +1,5 @@
+'use client';
+
 import { Button, Container } from '@components/ui';
 import { scrollToContact, scrollToElement } from '@utils/helpers';
 
@@ -53,8 +55,8 @@ export const Hero = () => {
 
             {/* Subheading */}
             <p className="text-lg md:text-xl lg:text-2xl text-text-light/70 dark:text-text-dark/70 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
-              Saudi Arabia's premier career-focused academy bridging the gap between school education and professional excellence.
-              We don't just teach subjects — we architect futures.
+              Saudi Arabia&apos;s premier career-focused academy bridging the gap between school education and professional excellence.
+              We don&apos;t just teach subjects — we architect futures.
             </p>
 
             {/* CTA Buttons */}

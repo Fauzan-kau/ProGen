@@ -1,3 +1,5 @@
+'use client';
+
 import { Container, Card, Button } from '@components/ui';
 import { scrollToContact } from '@utils/helpers';
 
@@ -104,7 +106,7 @@ export const Programs = () => {
               {/* Highlights */}
               <div className="mb-6 flex-1">
                 <h4 className="font-semibold text-text-light dark:text-text-dark mb-3 text-sm md:text-base">
-                  What You'll Learn:
+                  What You&apos;ll Learn:
                 </h4>
                 <ul className="space-y-2">
                   {program.highlights.map((highlight, index) => (

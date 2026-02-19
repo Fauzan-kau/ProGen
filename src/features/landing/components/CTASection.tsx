@@ -1,3 +1,5 @@
+'use client';
+
 import { Container, Button } from '@components/ui';
 import { scrollToContact } from '@utils/helpers';
 
@@ -20,7 +22,7 @@ export const CTASection = () => {
             Ready to Architect Your Future?
           </h2>
           <p className="text-lg md:text-xl lg:text-2xl mb-8 md:mb-12 text-white/90 leading-relaxed px-4 md:px-0">
-            Join Saudi Arabia's most trusted career-focused academy. Move beyond high grades toward high-impact careers aligned with Vision 2030.
+            Join Saudi Arabia&apos;s most trusted career-focused academy. Move beyond high grades toward high-impact careers aligned with Vision 2030.
           </p>
 
           {/* CTA Buttons */}

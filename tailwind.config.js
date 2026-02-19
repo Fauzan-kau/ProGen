@@ -1,11 +1,10 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        // ProGen Brand Colors
         brand: {
           red: {
             DEFAULT: '#FC5B50',
@@ -30,7 +29,6 @@ export default {
         body: ['Neulis Sans', 'system-ui', 'sans-serif'],
       },
       spacing: {
-        // Custom spacing scale
         18: '4.5rem',
         88: '22rem',
         112: '28rem',
@@ -40,7 +38,7 @@ export default {
         '4xl': '2rem',
       },
       boxShadow: {
-        'premium': '0 10px 40px rgba(0, 0, 0, 0.1)',
+        premium: '0 10px 40px rgba(0, 0, 0, 0.1)',
         'premium-lg': '0 20px 60px rgba(0, 0, 0, 0.15)',
       },
     },

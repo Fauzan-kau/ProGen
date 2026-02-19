@@ -3,7 +3,7 @@
  * Central HTTP client for all API requests
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://api.progen.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.progen.com';
 
 interface RequestOptions extends RequestInit {
   params?: Record<string, string>;

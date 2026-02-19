@@ -7,7 +7,12 @@
       "Bash(npm run build:*)",
       "Bash(timeout 5 npm run dev:*)",
       "Bash(ls:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(python3:*)",
+      "Bash(node:*)",
+      "Bash(/tmp/analyze.js:*)",
+      "Bash(__NEW_LINE_8a702cda26436c12__ node /tmp/analyze.js)",
+      "Bash(taskkill:*)"
     ]
   }
 }

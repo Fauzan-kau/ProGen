@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, FormEvent } from 'react';
 import { Container, Button, Toast } from '@components/ui';
 import { submitContactForm, ContactFormData } from '../services/emailService';
@@ -36,7 +38,7 @@ export const ContactForm = () => {
       await submitContactForm(formData);
       // Show success toast
       setToastType('success');
-      setToastMessage('Message sent successfully! We\'ll get back to you within 24 hours.');
+      setToastMessage("Message sent successfully! We'll get back to you within 24 hours.");
       setShowToast(true);
       // Reset form
       setFormData({
