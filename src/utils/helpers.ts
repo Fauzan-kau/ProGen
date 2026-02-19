@@ -51,8 +51,8 @@ export const scrollToElement = (elementId: string, offset = 80) => {
 };
 
 /**
- * Scroll to contact form
+ * Navigate to the contact page
  */
 export const scrollToContact = () => {
-  scrollToElement('contact', 100);
+  window.location.href = '/contact';
 };

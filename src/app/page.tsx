@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Hero, Features, Programs, CTASection } from '@features/landing';
-import { ContactForm } from '@features/contact';
+import { Hero, BrandPromise, Features, Programs, CTASection } from '@features/landing';
 
 export const metadata: Metadata = {
   title: 'ProGen — Where Education Becomes a Career Strategy',
@@ -15,10 +14,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <BrandPromise />
       <Features />
       <Programs />
       <CTASection />
-      <ContactForm />
     </>
   );
 }

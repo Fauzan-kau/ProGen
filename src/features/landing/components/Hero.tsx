@@ -83,7 +83,7 @@ export const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 mt-16 md:mt-20 pt-8 md:pt-12 border-t border-gray-200 dark:border-gray-700">
+            {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 mt-16 md:mt-20 pt-8 md:pt-12 border-t border-gray-200 dark:border-gray-700">
               <div>
                 <div className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-brand-red mb-2">
                   1000+
@@ -108,7 +108,7 @@ export const Hero = () => {
                   Aligned Academy
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </Container>

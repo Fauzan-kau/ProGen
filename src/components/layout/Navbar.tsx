@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Container } from '@components/ui';
 import { NavLink } from '@/types';
 import { scrollToContact } from '@utils/helpers';
@@ -14,6 +15,16 @@ interface NavbarProps {
 
 export const Navbar = ({ links, onCTAClick }: NavbarProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => pathname === href;
+
+  const linkClass = (href: string) =>
+    `transition-colors font-medium ${
+      isActive(href)
+        ? 'text-brand-red'
+        : 'text-text-light dark:text-text-dark hover:text-brand-red'
+    }`;
 
   return (
     <nav className="sticky top-0 z-50 bg-white/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
@@ -40,7 +51,7 @@ export const Navbar = ({ links, onCTAClick }: NavbarProps) => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium"
+                  className={linkClass(link.href)}
                 >
                   {link.label}
                 </Link>
@@ -48,7 +59,7 @@ export const Navbar = ({ links, onCTAClick }: NavbarProps) => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium"
+                  className={linkClass(link.href)}
                   target={link.external ? '_blank' : undefined}
                   rel={link.external ? 'noopener noreferrer' : undefined}
                 >
@@ -99,7 +110,7 @@ export const Navbar = ({ links, onCTAClick }: NavbarProps) => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium py-2"
+                    className={`${linkClass(link.href)} py-2`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.label}
@@ -108,7 +119,7 @@ export const Navbar = ({ links, onCTAClick }: NavbarProps) => {
                   <a
                     key={link.href}
                     href={link.href}
-                    className="text-text-light dark:text-text-dark hover:text-brand-red transition-colors font-medium py-2"
+                    className={`${linkClass(link.href)} py-2`}
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noopener noreferrer' : undefined}
                     onClick={() => setMobileMenuOpen(false)}

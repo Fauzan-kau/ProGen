@@ -46,7 +46,7 @@ export const Footer = ({ sections }: FooterProps) => {
                 <h4 className="font-heading font-semibold text-lg mb-4">{section.title}</h4>
                 <ul className="space-y-2">
                   {section.links.map((link) => (
-                    <li key={link.href}>
+                    <li key={link.label}>
                       {link.href.startsWith('/') ? (
                         <Link
                           href={link.href}
@@ -76,18 +76,18 @@ export const Footer = ({ sections }: FooterProps) => {
                 © {currentYear} ProGen. All rights reserved.
               </p>
               <div className="flex gap-6">
-                <a
-                  href="/privacy"
+                <Link
+                  href="/contact"
                   className="text-text-dark/60 hover:text-brand-red transition-colors text-sm"
                 >
-                  Privacy Policy
-                </a>
-                <a
-                  href="/terms"
+                  Contact Us
+                </Link>
+                <Link
+                  href="/about"
                   className="text-text-dark/60 hover:text-brand-red transition-colors text-sm"
                 >
-                  Terms of Service
-                </a>
+                  About ProGen
+                </Link>
               </div>
             </div>
           </div>

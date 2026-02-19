@@ -6,36 +6,35 @@ interface MainLayoutProps {
 }
 
 const navLinks: NavLink[] = [
-  { label: 'Programs', href: '#programs' },
-  { label: 'Features', href: '#features' },
+  { label: 'Programs', href: '/programs' },
+  { label: 'Features', href: '/features' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const footerSections = [
   {
     title: 'Programs',
     links: [
-      { label: 'Academic Excellence', href: '/programs/academic-excellence' },
-      { label: 'Career Strategy', href: '/programs/career-strategy' },
-      { label: 'Leadership Development', href: '/programs/leadership' },
+      { label: 'Academic Excellence', href: '/programs' },
+      { label: 'Career Strategy', href: '/programs' },
+      { label: 'Leadership Development', href: '/programs' },
     ],
   },
   {
     title: 'Company',
     links: [
       { label: 'About Us', href: '/about' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: '/contact' },
     ],
   },
   {
-    title: 'Resources',
+    title: 'Quick Links',
     links: [
-      { label: 'Community', href: '/community' },
-      { label: 'Support', href: '/support' },
-      { label: 'FAQ', href: '/faq' },
+      { label: 'Home', href: '/' },
+      { label: 'Programs', href: '/programs' },
+      { label: 'Features', href: '/features' },
+      { label: 'Enroll Now', href: '/contact' },
     ],
   },
 ];

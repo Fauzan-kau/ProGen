@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Container, Card } from '@components/ui';
 
@@ -56,33 +57,37 @@ const values = [
 
 const team = [
   {
-    initials: 'DA',
-    gradient: 'from-blue-500 to-blue-700',
-    name: 'Dr. Ahmad Al-Rashidi',
-    title: 'Academic Excellence Director',
-    bio: 'With over 14 years of experience in Saudi education and curriculum development, Dr. Ahmad has helped thousands of students excel academically and gain admission to top universities across the Kingdom.',
+    photo: '/images/Hamras.jpeg',
+    name: 'Hamras',
+    title: 'Head of Chemistry Faculty',
+    badge: 'Chemistry',
+    bio: "Former Chemistry Faculty at Brilliant Study Centre, Pala with 4+ years of experience. Specializes in concept-based, exam-oriented teaching that builds student confidence and strong academic performance.",
+    specialties: ['Concept-Based Teaching', 'Exam Preparation', 'Board & Entrance Coaching'],
   },
   {
-    initials: 'FZ',
-    gradient: 'from-brand-red to-brand-red-hover',
-    name: 'Fatima Al-Zahra',
-    title: 'Career Strategy Coach',
-    bio: 'A certified career coach and Vision 2030 specialist, Fatima has guided over 500 students in mapping their professional trajectories — from choosing the right major to landing their dream internships.',
+    photo: '/images/anandhu.jpeg',
+    name: 'Anandhu',
+    title: 'Physics Faculty',
+    badge: 'Physics',
+    bio: "MSc in Physics with 5+ years across edtech and academic platforms. Has served as Faculty, Trainer, and Mentor — guiding students through structured concept learning and exam-focused preparation.",
+    specialties: ['Physics Concepts', 'Exam-Focused Prep', 'Quality Mentorship'],
   },
   {
-    initials: 'OH',
-    gradient: 'from-green-500 to-green-700',
-    name: 'Omar Hassan',
-    title: 'Leadership Development Mentor',
-    bio: 'Former corporate trainer and leadership development specialist, Omar brings real-world professional skills into the classroom, preparing students for the modern Saudi workplace.',
+    photo: '/images/nafiya.jpeg',
+    name: 'Nafiya',
+    title: 'Mathematics Faculty',
+    badge: 'Mathematics',
+    bio: "MSc in Mathematics from Jamia Millia Islamia and former Assistant Professor at WIRAS College, Kannur. Teaches across online and offline platforms with a focus on conceptual clarity and logical problem-solving.",
+    specialties: ['Conceptual Mathematics', 'Logical Problem-Solving', 'Step-by-Step Learning'],
   },
-];
-
-const stats = [
-  { number: '1,000+', label: 'Students Empowered' },
-  { number: '98%', label: 'Success Rate' },
-  { number: '14+', label: 'Years Experience' },
-  { number: '3', label: 'Flagship Programs' },
+  {
+    photo: '/images/shahira.jpeg',
+    name: 'Shahira',
+    title: 'Biology Faculty',
+    badge: 'Biology',
+    bio: "B.Sc. in Microbiology and B.Ed. in Biological Science with 3+ years of teaching experience online and offline. Creates interactive, student-centered learning environments that build confidence and strengthen fundamentals.",
+    specialties: ['Concept-Oriented Teaching', 'Interactive Learning', 'Student-Centered Guidance'],
+  },
 ];
 
 export default function AboutPage() {
@@ -108,7 +113,7 @@ export default function AboutPage() {
               ProGen was founded on a single belief: high grades alone are no longer enough. Saudi Arabia&apos;s rapidly evolving economy — driven by Vision 2030 — demands professionals who combine academic excellence with strategic career thinking, leadership, and real-world skills.
             </p>
             <Link
-              href="/#contact"
+              href="/contact"
               className="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-hover text-white px-8 py-4 rounded-lg font-semibold transition-all hover:shadow-lg active:scale-95"
             >
               Start Your Journey
@@ -202,27 +207,49 @@ export default function AboutPage() {
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-text-light dark:text-text-dark mb-4">
-              Meet the <span className="text-brand-red">Team</span>
+              Meet the <span className="text-brand-red">Faculty</span>
             </h2>
             <p className="text-text-light/70 dark:text-text-dark/70">
-              World-class educators and career specialists dedicated to your success.
+              Experienced educators dedicated to building conceptual clarity and academic excellence.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((member) => (
-              <Card key={member.name} hoverable padding="lg" className="text-center">
-                <div
-                  className={`w-20 h-20 rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center mx-auto mb-4 shadow-lg`}
-                >
-                  <span className="text-white text-xl font-bold font-heading">{member.initials}</span>
+              <Card key={member.name} hoverable className="flex flex-col items-center text-center p-6">
+                {/* Photo */}
+                <div className="relative w-28 h-28 rounded-full overflow-hidden mb-4 shadow-lg ring-4 ring-brand-red/10 flex-shrink-0">
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
+                    sizes="112px"
+                  />
                 </div>
-                <p className="text-brand-red text-sm font-semibold mb-1">{member.title}</p>
-                <h3 className="text-lg font-heading font-bold text-text-light dark:text-text-dark mb-3">
+                {/* Badge */}
+                <span className="inline-block text-xs font-semibold bg-brand-red/10 text-brand-red border border-brand-red/20 rounded-full px-3 py-1 mb-2">
+                  {member.badge}
+                </span>
+                {/* Name & Title */}
+                <h3 className="text-base font-heading font-bold text-text-light dark:text-text-dark mb-0.5">
                   {member.name}
                 </h3>
-                <p className="text-sm text-text-light/70 dark:text-text-dark/70 leading-relaxed">
+                <p className="text-brand-red text-xs font-semibold mb-3">{member.title}</p>
+                {/* Bio */}
+                <p className="text-xs text-text-light/70 dark:text-text-dark/70 leading-relaxed mb-4">
                   {member.bio}
                 </p>
+                {/* Specialties */}
+                <div className="flex flex-wrap gap-1.5 justify-center mt-auto">
+                  {member.specialties.map((s) => (
+                    <span
+                      key={s}
+                      className="text-xs bg-gray-100 dark:bg-gray-800 text-text-light/60 dark:text-text-dark/60 rounded-full px-2.5 py-1"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
               </Card>
             ))}
           </div>
@@ -241,13 +268,13 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 bg-white text-brand-red hover:bg-white/90 px-8 py-4 rounded-lg font-semibold transition-all hover:shadow-xl active:scale-95"
               >
                 Enroll in a Free Session
               </Link>
               <Link
-                href="/#programs"
+                href="/programs"
                 className="inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-brand-red px-8 py-4 rounded-lg font-semibold transition-all active:scale-95"
               >
                 View Programs

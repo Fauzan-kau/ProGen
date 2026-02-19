@@ -12,7 +12,8 @@
       "Bash(node:*)",
       "Bash(/tmp/analyze.js:*)",
       "Bash(__NEW_LINE_8a702cda26436c12__ node /tmp/analyze.js)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }
