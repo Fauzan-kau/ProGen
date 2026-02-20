@@ -1,19 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm create:*)",
-      "Bash(tree:*)",
-      "Bash(npm install)",
-      "Bash(npm run build:*)",
-      "Bash(timeout 5 npm run dev:*)",
-      "Bash(ls:*)",
       "Bash(npm install:*)",
-      "Bash(python3:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npx tsc:*)",
       "Bash(node:*)",
-      "Bash(/tmp/analyze.js:*)",
-      "Bash(__NEW_LINE_8a702cda26436c12__ node /tmp/analyze.js)",
-      "Bash(taskkill:*)",
-      "Bash(npx tsc:*)"
+      "Bash(ls:*)"
     ]
   }
 }

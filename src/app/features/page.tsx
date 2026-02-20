@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Discover what you gain at ProGen — precision learning, career trajectory mapping, academic mastery, and Vision 2030-aligned guidance.',
   alternates: {
-    canonical: 'https://progen.sa/features',
+    canonical: 'https://www.progenksa.com/features',
   },
 };
 

@@ -6,9 +6,26 @@ import { Container, Card } from '@components/ui';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    "Learn about ProGen — Saudi Arabia's premier career-focused academy bridging the gap between school education and professional excellence, aligned with Vision 2030.",
-  alternates: {
-    canonical: 'https://progen.sa/about',
+    "Learn about ProGen — Saudi Arabia's premier career-focused academy in Riyadh bridging school education and professional excellence, aligned with Vision 2030.",
+  keywords: [
+    'about ProGen',
+    'ProGen academy Riyadh',
+    'education Vision 2030',
+    'ProGen faculty',
+    'career academy Saudi Arabia',
+    'CBSE teachers Riyadh',
+  ],
+  alternates: { canonical: 'https://www.progenksa.com/about' },
+  openGraph: {
+    title: 'About Us | ProGen',
+    description: "Learn about ProGen — Saudi Arabia's premier career-focused academy in Riyadh, aligned with Vision 2030.",
+    url: 'https://www.progenksa.com/about',
+    images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: 'About ProGen Academy' }],
+  },
+  twitter: {
+    title: 'About Us | ProGen',
+    description: "Learn about ProGen — Saudi Arabia's premier career-focused academy in Riyadh, aligned with Vision 2030.",
+    images: ['/images/og-image.png'],
   },
 };
 
