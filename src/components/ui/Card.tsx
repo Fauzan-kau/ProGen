@@ -11,6 +11,7 @@ export const Card = ({
   hoverable = false,
   padding = 'md',
   className = '',
+  onClick,
 }: CardProps) => {
   const baseStyles =
     'bg-white dark:bg-surface rounded-xl shadow-premium transition-all duration-300';
@@ -20,7 +21,7 @@ export const Card = ({
     : '';
 
   return (
-    <div className={`${baseStyles} ${hoverStyles} ${paddingStyles[padding]} ${className}`}>
+    <div className={`${baseStyles} ${hoverStyles} ${paddingStyles[padding]} ${className}`} onClick={onClick}>
       {children}
     </div>
   );

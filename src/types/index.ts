@@ -23,6 +23,7 @@ export interface ButtonProps extends BaseComponentProps {
 export interface CardProps extends BaseComponentProps {
   hoverable?: boolean;
   padding?: Size;
+  onClick?: () => void;
 }
 
 export interface NavLink {

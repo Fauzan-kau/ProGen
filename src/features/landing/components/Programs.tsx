@@ -1,42 +1,202 @@
 'use client';
 
+import { useState } from 'react';
+import React from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { Container, Card, Button } from '@components/ui';
-import { scrollToContact } from '@utils/helpers';
 
-const programs = [
+type Program = {
+  id: string;
+  cardIcon: React.ReactNode;
+  image: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  meta: { icon: string; label: string }[];
+  highlights: string[];
+};
+
+const programs: Program[] = [
   {
-    id: 'academic-excellence',
-    title: 'Academic Excellence Program',
+    id: 'cbse-tuition',
+    cardIcon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0-6l-3.5 2.5M12 20l-9-5" />
+      </svg>
+    ),
+    image: '/images/tutor.jpg',
+    title: 'CBSE Tuition Program',
+    subtitle: 'Class 8–12',
     description:
-      'Rigorous academic tuition combining school curriculum mastery with critical thinking development and exam preparation.',
-    duration: 'Year-round',
-    level: 'All Grades',
-    highlights: ['Subject Mastery', 'Exam Strategies', 'Critical Thinking', 'Grade Improvement'],
+      'Comprehensive CBSE-focused tuition designed to build strong academic foundations, improve grades, and prepare students for board examinations with confidence.',
+    meta: [
+      { icon: 'calendar', label: 'Year-round batches' },
+      { icon: 'target', label: 'Class 8 to Class 12' },
+      { icon: 'book', label: 'CBSE Curriculum' },
+    ],
+    highlights: [
+      'Complete syllabus coverage',
+      'Concept clarity & fundamentals',
+      'Board exam preparation strategies',
+      'Weekly tests & performance analysis',
+      'Doubt-solving sessions',
+    ],
   },
   {
-    id: 'career-strategy',
-    title: 'Career Strategy Coaching',
+    id: 'neet-jee',
+    cardIcon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+      </svg>
+    ),
+    image: '/images/dreng.jpg',
+    title: 'NEET & JEE Preparation',
+    subtitle: 'Regular + Crash Courses',
     description:
-      'Personalized career guidance aligned with Vision 2030, helping students map their professional trajectory from school to success.',
-    duration: 'Continuous',
-    level: 'High School & Beyond',
-    highlights: ['Career Mapping', 'University Planning', 'Professional Skills', 'Vision 2030 Alignment'],
+      'Intensive preparation program for NEET and JEE aspirants with structured study plans, expert mentorship, and exam-oriented practice.',
+    meta: [
+      { icon: 'calendar', label: '1-Year & 2-Year Programs' },
+      { icon: 'bolt', label: 'Fast-Track Crash Courses' },
+      { icon: 'target', label: 'Expert Faculty & Mentorship' },
+    ],
+    highlights: [
+      'Physics, Chemistry & Mathematics (JEE)',
+      'Physics, Chemistry & Biology (NEET)',
+      'Advanced problem-solving techniques',
+      'Mock tests & All-India test series',
+      'Time management strategies',
+    ],
   },
   {
-    id: 'leadership-development',
-    title: 'Leadership & Professional Development',
+    id: 'coding',
+    cardIcon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+    image: '/images/coding.webp',
+    title: 'Coding & Software Development',
+    subtitle: 'Beginner to Advanced',
     description:
-      'Build essential leadership, communication, and professional skills that set you apart in the competitive job market.',
-    duration: 'Semester-based',
-    level: 'Advanced Students',
-    highlights: ['Leadership Skills', 'Public Speaking', 'Networking', 'Professional Etiquette'],
+      'Future-ready coding program designed to build programming skills, logical thinking, and real-world software development expertise.',
+    meta: [
+      { icon: 'bolt', label: 'Beginner to Advanced Levels' },
+      { icon: 'target', label: 'Web & App Development' },
+      { icon: 'book', label: 'Project-Based Learning' },
+    ],
+    highlights: [
+      'Programming fundamentals (Python / C++ / Java)',
+      'Data Structures & Algorithms',
+      'Web Development (HTML, CSS, JavaScript, React)',
+      'App Development Basics',
+      'AI & Future Tech Foundations',
+    ],
   },
 ];
 
+const MetaIcon = ({ icon }: { icon: string }) => (
+  <svg className="w-4 h-4 text-brand-red flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    {icon === 'calendar' && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />}
+    {icon === 'target' && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />}
+    {icon === 'book' && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />}
+    {icon === 'bolt' && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />}
+  </svg>
+);
+
+const ProgramModal = ({ program, onClose }: { program: Program; onClose: () => void }) => {
+  const router = useRouter();
+
+  return (
+    <div
+      className="fixed inset-0 z-[9998] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative bg-white dark:bg-background-dark rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Hero Image */}
+        <div className="relative w-full h-56 md:h-72 rounded-t-2xl overflow-hidden">
+          <Image
+            src={program.image}
+            alt={program.title}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 rounded-full bg-black/40 text-white hover:bg-black/60 transition-colors"
+            aria-label="Close"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Title overlay on image */}
+          <div className="absolute bottom-5 left-6">
+            <p className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-1">{program.subtitle}</p>
+            <h3 className="text-2xl md:text-3xl font-heading font-bold text-white">{program.title}</h3>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 md:p-8">
+          <p className="text-sm md:text-base text-text-light/70 dark:text-text-dark/70 leading-relaxed mb-6">
+            {program.description}
+          </p>
+
+          {/* Meta + Highlights side by side on md+ */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            {/* Meta */}
+            <div>
+              <h4 className="font-semibold text-text-light dark:text-text-dark mb-3 text-sm uppercase tracking-wide">
+                Program Highlights
+              </h4>
+              <div className="flex flex-col gap-3">
+                {program.meta.map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm">
+                    <MetaIcon icon={item.icon} />
+                    <span className="text-text-light/80 dark:text-text-dark/80">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Highlights */}
+            <div>
+              <h4 className="font-semibold text-text-light dark:text-text-dark mb-3 text-sm uppercase tracking-wide">
+                What You&apos;ll Learn
+              </h4>
+              <ul className="flex flex-col gap-2">
+                {program.highlights.map((highlight, index) => (
+                  <li key={index} className="flex items-start gap-2 text-sm">
+                    <svg className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-text-light/70 dark:text-text-dark/70">{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Enroll Button */}
+          <Button variant="primary" fullWidth onClick={() => router.push('/contact')}>
+            Enroll Now
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const Programs = () => {
-  const handleEnroll = () => {
-    scrollToContact();
-  };
+  const [selected, setSelected] = useState<Program | null>(null);
 
   return (
     <section id="programs" className="section-padding bg-background-light dark:bg-background-dark">
@@ -54,94 +214,43 @@ export const Programs = () => {
         {/* Programs Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
           {programs.map((program) => (
-            <Card key={program.id} hoverable padding="lg" className="flex flex-col h-full">
-              {/* Program Header */}
-              <div className="mb-6">
-                <h3 className="text-2xl md:text-3xl font-heading font-bold text-text-light dark:text-text-dark mb-3">
+            <Card
+              key={program.id}
+              hoverable
+              padding="lg"
+              className="flex flex-col h-full cursor-pointer"
+              onClick={() => setSelected(program)}
+            >
+              <div className="flex-1">
+                <div className="flex justify-center mb-6">
+                  <div className="w-20 h-20 rounded-2xl bg-brand-red/10 flex items-center justify-center text-brand-red">
+                    <div className="w-10 h-10 [&>svg]:w-full [&>svg]:h-full">
+                      {program.cardIcon}
+                    </div>
+                  </div>
+                </div>
+                <h3 className="text-xl md:text-2xl font-heading font-bold text-text-light dark:text-text-dark mb-1">
                   {program.title}
                 </h3>
-                <p className="text-sm md:text-base text-text-light/70 dark:text-text-dark/70 leading-relaxed">
+                <p className="text-sm font-semibold text-brand-red mb-3">{program.subtitle}</p>
+                <p className="text-sm text-text-light/70 dark:text-text-dark/70 leading-relaxed">
                   {program.description}
                 </p>
               </div>
 
-              {/* Program Meta */}
-              <div className="flex flex-wrap gap-4 mb-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <svg
-                    className="w-5 h-5 text-brand-red"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <span className="text-text-light/80 dark:text-text-dark/80">
-                    {program.duration}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg
-                    className="w-5 h-5 text-brand-red"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                  <span className="text-text-light/80 dark:text-text-dark/80">{program.level}</span>
-                </div>
+              <div className="mt-6 flex items-center gap-1 text-sm font-semibold text-brand-red">
+                View Details
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </div>
-
-              {/* Highlights */}
-              <div className="mb-6 flex-1">
-                <h4 className="font-semibold text-text-light dark:text-text-dark mb-3 text-sm md:text-base">
-                  What You&apos;ll Learn:
-                </h4>
-                <ul className="space-y-2">
-                  {program.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm md:text-base">
-                      <svg
-                        className="w-5 h-5 text-brand-red flex-shrink-0 mt-0.5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span className="text-text-light/70 dark:text-text-dark/70">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* CTA */}
-              <Button
-                variant="primary"
-                fullWidth
-                onClick={handleEnroll}
-              >
-                Enroll Now
-              </Button>
             </Card>
           ))}
         </div>
       </Container>
+
+      {/* Modal */}
+      {selected && <ProgramModal program={selected} onClose={() => setSelected(null)} />}
     </section>
   );
 };
