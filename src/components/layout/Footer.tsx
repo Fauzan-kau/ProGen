@@ -72,9 +72,19 @@ export const Footer = ({ sections }: FooterProps) => {
           {/* Bottom Section */}
           <div className="pt-8 border-t border-gray-700">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-text-dark/60 text-sm text-center md:text-left">
-                © {currentYear} ProGen. All rights reserved.
-              </p>
+              <div className="flex flex-col items-center md:items-start gap-1">
+                <p className="text-text-dark/60 text-sm text-center md:text-left">
+                  © {currentYear} ProGen. All rights reserved.
+                </p>
+                <a
+                  href="https://www.linkedin.com/in/fauzan-sharafuddeen/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text-dark/40 hover:text-text-dark/70 transition-colors text-xs"
+                >
+                  crafted and developed by Fauzan Sharafuddeen
+                </a>
+              </div>
               <div className="flex gap-6">
                 <Link
                   href="/contact"

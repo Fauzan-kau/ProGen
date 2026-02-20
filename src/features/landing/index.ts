@@ -1,1 +1,1 @@
-export { Hero, BrandPromise, Features, Programs, CTASection } from './components';
+export { Hero, BrandPromise, Features, Programs, CTASection, CBSEOffer } from './components';

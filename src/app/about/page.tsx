@@ -100,27 +100,44 @@ export default function AboutPage() {
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-brand-red/5 rounded-full blur-3xl" />
         </div>
         <Container className="relative">
-          <div className="py-16 md:py-24 lg:py-32 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-red/10 rounded-full mb-6">
-              <span className="w-2 h-2 bg-brand-red rounded-full" />
-              <span className="text-sm font-semibold text-brand-red">Our Story</span>
+          <div className="py-16 md:py-24 lg:py-28 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+            {/* Text */}
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-red/10 rounded-full mb-6">
+                <span className="w-2 h-2 bg-brand-red rounded-full" />
+                <span className="text-sm font-semibold text-brand-red">Our Story</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text-light dark:text-text-dark mb-6 leading-tight">
+                We Don&apos;t Just Teach.{' '}
+                <span className="text-brand-red">We Architect Futures.</span>
+              </h1>
+              <p className="text-lg md:text-xl text-text-light/70 dark:text-text-dark/70 leading-relaxed mb-8">
+                ProGen was founded on a single belief: high grades alone are no longer enough. Saudi Arabia&apos;s rapidly evolving economy — driven by Vision 2030 — demands professionals who combine academic excellence with strategic career thinking, leadership, and real-world skills.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-hover text-white px-8 py-4 rounded-lg font-semibold transition-all hover:shadow-lg active:scale-95"
+              >
+                Start Your Journey
+                <svg width="6" height="10" viewBox="0 0 6 10" fill="none">
+                  <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-text-light dark:text-text-dark mb-6 leading-tight">
-              We Don&apos;t Just Teach.{' '}
-              <span className="text-brand-red">We Architect Futures.</span>
-            </h1>
-            <p className="text-lg md:text-xl text-text-light/70 dark:text-text-dark/70 leading-relaxed mb-8">
-              ProGen was founded on a single belief: high grades alone are no longer enough. Saudi Arabia&apos;s rapidly evolving economy — driven by Vision 2030 — demands professionals who combine academic excellence with strategic career thinking, leadership, and real-world skills.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 bg-brand-red hover:bg-brand-red-hover text-white px-8 py-4 rounded-lg font-semibold transition-all hover:shadow-lg active:scale-95"
-            >
-              Start Your Journey
-              <svg width="6" height="10" viewBox="0 0 6 10" fill="none">
-                <path d="M1 9L5 5L1 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
+
+            {/* Image */}
+            <div className="flex-shrink-0 w-full max-w-sm md:max-w-md lg:max-w-lg rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="/images/about.jpg"
+                alt="Students at ProGen"
+                width={600}
+                height={450}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
+
           </div>
         </Container>
       </section>

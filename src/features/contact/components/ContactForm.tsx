@@ -144,10 +144,10 @@ export const ContactForm = () => {
                       Phone
                     </h4>
                     <a
-                      href="tel:+966123456789"
+                      href="tel:+966546306023"
                       className="text-text-light/70 dark:text-text-dark/70 hover:text-brand-red transition-colors"
                     >
-                      +966 12 345 6789
+                      +966 54 630 6023
                     </a>
                   </div>
                 </div>
@@ -180,7 +180,9 @@ export const ContactForm = () => {
                       Location
                     </h4>
                     <p className="text-text-light/70 dark:text-text-dark/70">
-                      Riyadh, Saudi Arabia
+                      Abi Talib Ibn Abduljabbar, <br />
+                      Al Murabba Dist., P.O. Box 12612 <br />
+                      Riyadh, KSA.
                     </p>
                   </div>
                 </div>
@@ -194,13 +196,13 @@ export const ContactForm = () => {
               </h4>
               <div className="space-y-1.5 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-text-light/70 dark:text-text-dark/70">Sunday - Thursday</span>
+                  <span className="text-text-light/70 dark:text-text-dark/70">Saturday - Thursday</span>
                   <span className="font-medium text-text-light dark:text-text-dark">
-                    9:00 AM - 6:00 PM
+                    9:00 AM - 5:00 PM
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-text-light/70 dark:text-text-dark/70">Friday - Saturday</span>
+                  <span className="text-text-light/70 dark:text-text-dark/70">Friday</span>
                   <span className="font-medium text-text-light dark:text-text-dark">Closed</span>
                 </div>
               </div>
@@ -291,9 +293,9 @@ export const ContactForm = () => {
                     className="w-full px-4 py-2.5 border-2 border-gray-200 dark:border-gray-700 rounded-lg focus:border-brand-red focus:ring-2 focus:ring-brand-red/20 outline-none transition-all bg-white dark:bg-background-dark text-text-light dark:text-text-dark"
                   >
                     <option value="">Select a program</option>
-                    <option value="academic-excellence">Academic Excellence Program</option>
-                    <option value="career-strategy">Career Strategy Coaching</option>
-                    <option value="leadership">Leadership & Professional Development</option>
+                    <option value="cbse-tuition">CBSE Tuition Program (Class 8–12)</option>
+                    <option value="neet-jee">NEET & JEE Preparation (Regular + Crash Courses)</option>
+                    <option value="coding">Coding & Software Development</option>
                     <option value="general">General Inquiry</option>
                   </select>
                 </div>

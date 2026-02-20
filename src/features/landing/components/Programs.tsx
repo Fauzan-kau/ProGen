@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import Image from 'next/image';
+
 import { useRouter } from 'next/navigation';
 import { Container, Card, Button } from '@components/ui';
 
@@ -15,6 +16,12 @@ type Program = {
   description: string;
   meta: { icon: string; label: string }[];
   highlights: string[];
+  extras?: {
+    targets: string[];
+    offered: string[];
+    standard: string;
+    availability: string;
+  };
 };
 
 const programs: Program[] = [
@@ -42,6 +49,18 @@ const programs: Program[] = [
       'Weekly tests & performance analysis',
       'Doubt-solving sessions',
     ],
+    extras: {
+      targets: ['Students of Grades 6–10', 'Students of Grades 11–12 (Science & Commerce)'],
+      offered: [
+        'Free Subject Notes',
+        'Exam-Oriented Question Banks',
+        'Important Previous Year Questions',
+        'Concept Summary Sheets',
+        'Practice Worksheets & Revision Material',
+      ],
+      standard: 'Designed as per CBSE & exam standards',
+      availability: 'Limited Seats | Limited Time Only',
+    },
   },
   {
     id: 'neet-jee',
@@ -185,6 +204,48 @@ const ProgramModal = ({ program, onClose }: { program: Program; onClose: () => v
             </div>
           </div>
 
+          {/* Extras — CBSE only */}
+          {program.extras && (
+            <div className="mb-8 space-y-6">
+              {/* Who It's For */}
+              <div className="flex flex-wrap gap-2">
+                {program.extras.targets.map((t, i) => (
+                  <span key={i} className="px-3 py-1.5 rounded-full bg-brand-red/10 text-brand-red text-xs font-semibold">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* What Is Offered */}
+              <div>
+                <h4 className="font-semibold text-text-light dark:text-text-dark mb-3 text-sm uppercase tracking-wide">
+                  What Is Offered
+                </h4>
+                <ul className="flex flex-col gap-2">
+                  {program.extras.offered.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm">
+                      <svg className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-text-light/70 dark:text-text-dark/70">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Standard + Availability */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex-1 bg-background-light dark:bg-white/5 rounded-xl px-4 py-3 text-sm text-text-light/80 dark:text-text-dark/80">
+                  <span className="font-semibold text-text-light dark:text-text-dark block mb-0.5">Academic Standard</span>
+                  {program.extras.standard}
+                </div>
+                <div className="flex-1 bg-brand-red/10 rounded-xl px-4 py-3 text-sm text-brand-red font-semibold flex items-center justify-center text-center">
+                  {program.extras.availability}
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Enroll Button */}
           <Button variant="primary" fullWidth onClick={() => router.push('/contact')}>
             Enroll Now
@@ -198,19 +259,66 @@ const ProgramModal = ({ program, onClose }: { program: Program; onClose: () => v
 export const Programs = () => {
   const [selected, setSelected] = useState<Program | null>(null);
 
-  return (
-    <section id="programs" className="section-padding bg-background-light dark:bg-background-dark">
-      <Container>
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text-light dark:text-text-dark mb-4 md:mb-6">
-            Our <span className="text-brand-red">Programs</span>
-          </h2>
-          <p className="text-base md:text-lg lg:text-xl text-text-light/70 dark:text-text-dark/70">
-            Combining academic mastery with strategic career guidance to architect your future.
-          </p>
-        </div>
+  useEffect(() => {
+    document.body.style.overflow = selected ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [selected]);
 
+  return (
+    <section id="programs" className="bg-background-light dark:bg-background-dark">
+
+      {/* Hero — two column */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+          {/* Left — text */}
+          <div className="flex-1">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-red/10 rounded-full mb-6">
+              <span className="w-2 h-2 bg-brand-red rounded-full animate-pulse" />
+              <span className="text-sm font-semibold text-brand-red">Trusted Programs</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text-light dark:text-text-dark mb-5 leading-tight">
+              Our <span className="text-brand-red">Programs</span>
+            </h2>
+            <p className="text-base md:text-lg text-text-light/70 dark:text-text-dark/70 leading-relaxed mb-8">
+              Every program at ProGen is built with a single goal — to move students beyond high grades and toward high-impact futures. Our curriculum is expert-designed, exam-aligned, and career-focused.
+            </p>
+
+            {/* Bullet programs */}
+            <ul className="space-y-4">
+              {programs.map((p) => (
+                <li key={p.id} className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-brand-red/10 flex items-center justify-center text-brand-red flex-shrink-0 mt-0.5">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-text-light dark:text-text-dark">{p.title}</p>
+                    <p className="text-sm text-brand-red">{p.subtitle}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right — image */}
+          <div className="flex-shrink-0 w-72 md:w-96 lg:w-[420px]">
+            <Image
+              src="/images/corevalues.png"
+              alt="Programs illustration"
+              width={420}
+              height={420}
+              className="w-full h-auto"
+            />
+          </div>
+
+        </div>
+      </div>
+
+      {/* Cards */}
+      <div className="section-padding pt-0">
+      <Container>
         {/* Programs Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
           {programs.map((program) => (
@@ -248,6 +356,7 @@ export const Programs = () => {
           ))}
         </div>
       </Container>
+      </div>
 
       {/* Modal */}
       {selected && <ProgramModal program={selected} onClose={() => setSelected(null)} />}

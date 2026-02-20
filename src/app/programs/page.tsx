@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Programs, CTASection } from '@features/landing';
+import { Programs, CBSEOffer, CTASection } from '@features/landing';
 
 export const metadata: Metadata = {
   title: 'Programs',
@@ -14,6 +14,7 @@ export default function ProgramsPage() {
   return (
     <>
       <Programs />
+      <CBSEOffer />
       <CTASection />
     </>
   );

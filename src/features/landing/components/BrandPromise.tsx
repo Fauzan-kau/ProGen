@@ -16,6 +16,13 @@ export const BrandPromise = () => {
             </span> */}
             <div className="lg:mt-4">
               <Image
+                src="/images/brandpromise.png"
+                alt=""
+                width={220}
+                height={180}
+                className="w-56 h-auto mb-4"
+              />
+              <Image
                 src="/images/ele1_light.png"
                 alt=""
                 width={48}
