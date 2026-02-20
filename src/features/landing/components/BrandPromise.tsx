@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export const BrandPromise = () => {
   return (
     <section className="bg-background-dark overflow-hidden relative">
@@ -9,10 +11,17 @@ export const BrandPromise = () => {
 
           {/* Left — section number */}
           <div className="lg:col-span-3 flex lg:flex-col lg:justify-end gap-4 lg:gap-0">
-            <span className="font-heading font-bold text-[6rem] md:text-[8rem] leading-none text-white/5 select-none">
+            {/* <span className="font-heading font-bold text-[6rem] md:text-[8rem] leading-none text-white/5 select-none">
               07
-            </span>
+            </span> */}
             <div className="lg:mt-4">
+              <Image
+                src="/images/ele1_light.png"
+                alt=""
+                width={48}
+                height={48}
+                className="w-10 h-10 mb-3 opacity-60"
+              />
               <span className="inline-block text-xs font-semibold tracking-widest uppercase text-brand-red border border-brand-red/30 rounded-full px-4 py-1.5">
                 The Brand Promise
               </span>

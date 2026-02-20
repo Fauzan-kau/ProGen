@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 interface LoadingScreenProps {
   onLoadComplete?: () => void;
@@ -10,6 +10,13 @@ export const LoadingScreen = ({ onLoadComplete }: LoadingScreenProps) => {
   const [fading, setFading] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   const handleVideoEnded = () => {
     setFading(true);

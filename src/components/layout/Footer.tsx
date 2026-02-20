@@ -21,7 +21,7 @@ export const Footer = ({ sections }: FooterProps) => {
 
   return (
     <footer className="bg-background-dark text-text-dark border-t border-gray-700">
-      <Container>
+<Container>
         <div className="py-12 md:py-16">
           {/* Top Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-8">

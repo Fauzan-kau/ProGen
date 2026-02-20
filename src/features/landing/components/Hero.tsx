@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Button, Container } from '@components/ui';
 import { scrollToContact, scrollToElement } from '@utils/helpers';
 
@@ -21,8 +22,10 @@ export const Hero = () => {
       </div>
 
       <Container className="relative">
-        <div className="py-16 md:py-24 lg:py-32">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+
+          {/* Left — Text Content */}
+          <div className="flex-1 text-center lg:text-left">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 bg-brand-red/10 rounded-full mb-6 md:mb-8">
               <span className="w-2 h-2 bg-brand-red rounded-full animate-pulse"></span>
@@ -54,62 +57,37 @@ export const Hero = () => {
             </h1>
 
             {/* Subheading */}
-            <p className="text-lg md:text-xl lg:text-2xl text-text-light/70 dark:text-text-dark/70 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
+            <p className="text-lg md:text-xl lg:text-2xl text-text-light/70 dark:text-text-dark/70 mb-8 md:mb-12 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               Saudi Arabia&apos;s premier career-focused academy bridging the gap between school education and professional excellence.
               We don&apos;t just teach subjects — we architect futures.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 md:px-0">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
               <Button variant="primary" size="lg" onClick={handleGetStarted}>
                 Start Your Journey
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Button>
               <Button variant="outline" size="lg" onClick={handleLearnMore}>
                 Discover Programs
               </Button>
             </div>
-
-            {/* Stats */}
-            {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12 mt-16 md:mt-20 pt-8 md:pt-12 border-t border-gray-200 dark:border-gray-700">
-              <div>
-                <div className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-brand-red mb-2">
-                  1000+
-                </div>
-                <div className="text-sm md:text-base text-text-light/60 dark:text-text-dark/60">
-                  Students Empowered
-                </div>
-              </div>
-              <div>
-                <div className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-brand-red mb-2">
-                  98%
-                </div>
-                <div className="text-sm md:text-base text-text-light/60 dark:text-text-dark/60">
-                  Success Rate
-                </div>
-              </div>
-              <div className="col-span-2 md:col-span-1">
-                <div className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-brand-red mb-2">
-                  Vision 2030
-                </div>
-                <div className="text-sm md:text-base text-text-light/60 dark:text-text-dark/60">
-                  Aligned Academy
-                </div>
-              </div>
-            </div> */}
           </div>
+
+          {/* Right — Boy Image */}
+          <div className="flex-shrink-0 relative w-72 md:w-96 lg:w-[420px] xl:w-[480px]">
+            <Image
+              src="/images/boybg.png"
+              alt="Student"
+              width={480}
+              height={600}
+              className="w-full h-auto object-contain drop-shadow-2xl"
+              priority
+            />
+          </div>
+
         </div>
       </Container>
     </section>
