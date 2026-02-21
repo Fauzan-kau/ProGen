@@ -64,7 +64,7 @@ export default function OGImage() {
             lineHeight: 1.5,
           }}
         >
-          Saudi Arabia's premier career-focused academy bridging school education and professional excellence, aligned with Vision 2030.
+          Saudi Arabia&apos;s premier career-focused academy bridging school education and professional excellence, aligned with Vision 2030.
         </div>
 
         <div

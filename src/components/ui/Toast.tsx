@@ -58,7 +58,7 @@ export const Toast = ({ message, type, onClose, duration = 5000 }: ToastProps) =
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50 animate-slideInRight">
+    <div className="fixed top-20 right-4 z-[9997] animate-slideInRight">
       <div
         className={`${typeStyles[type]} text-white rounded-lg shadow-premium-lg border-2 p-4 flex items-start gap-3 min-w-[320px] max-w-md`}
       >
