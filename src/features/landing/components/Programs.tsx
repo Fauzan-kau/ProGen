@@ -112,6 +112,43 @@ const programs: Program[] = [
       'AI & Future Tech Foundations',
     ],
   },
+  {
+    id: 'jr-business-school',
+    cardIcon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    image: '/images/bse.png',
+    title: "ProGen's Jr Business School",
+    subtitle: '+1 & +2 CBSE Commerce',
+    description:
+      'Shape your future in commerce. A program blending academic excellence with professional readiness — with a head start on CMA and ACCA certifications.',
+    meta: [
+      { icon: 'book', label: '+1 & +2 CBSE Commerce' },
+      { icon: 'target', label: 'CMA & ACCA Head Start' },
+      { icon: 'bolt', label: 'Corporate-Experienced Mentors' },
+    ],
+    highlights: [
+      'Expert mentors with corporate experience',
+      'Practical focus on Accounting, Finance & more',
+      'Hands-on workshops, projects & industry insights',
+      'Head start on CMA and ACCA certifications',
+      'Personalized guidance for academic & professional success',
+    ],
+    extras: {
+      targets: ['+1 Commerce Students', '+2 Commerce Students'],
+      offered: [
+        'Interactive Commerce Workshops',
+        'Industry Insight Sessions',
+        'CMA & ACCA Orientation Material',
+        'Career Path Exploration Activities',
+        'Personalized Academic Guidance',
+      ],
+      standard: 'Aligned with CBSE Commerce curriculum & professional certification standards',
+      availability: 'Limited Seats | Enroll Early',
+    },
+  },
 ];
 
 const MetaIcon = ({ icon }: { icon: string }) => (
@@ -320,7 +357,7 @@ export const Programs = () => {
       <div className="section-padding pt-0">
       <Container>
         {/* Programs Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
           {programs.map((program) => (
             <Card
               key={program.id}

@@ -12,9 +12,11 @@ export const LoadingScreen = ({ onLoadComplete }: LoadingScreenProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.scrollbarWidth = 'none';
     return () => {
-      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.scrollbarWidth = '';
     };
   }, []);
 
