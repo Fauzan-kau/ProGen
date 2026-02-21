@@ -20,12 +20,10 @@ export const metadata: Metadata = {
     title: 'About Us | ProGen',
     description: "Learn about ProGen — Saudi Arabia's premier career-focused academy in Riyadh, aligned with Vision 2030.",
     url: 'https://www.progenksa.com/about',
-    images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: 'About ProGen Academy' }],
   },
   twitter: {
     title: 'About Us | ProGen',
     description: "Learn about ProGen — Saudi Arabia's premier career-focused academy in Riyadh, aligned with Vision 2030.",
-    images: ['/images/og-image.png'],
   },
 };
 
@@ -104,6 +102,14 @@ const team = [
     badge: 'Biology',
     bio: "B.Sc. in Microbiology and B.Ed. in Biological Science with 3+ years of teaching experience online and offline. Creates interactive, student-centered learning environments that build confidence and strengthen fundamentals.",
     specialties: ['Concept-Oriented Teaching', 'Interactive Learning', 'Student-Centered Guidance'],
+  },
+  {
+    photo: '/images/dhiyoof.jpeg',
+    name: 'Iyyas Dhiyoof',
+    title: 'Commerce Faculty',
+    badge: 'Commerce',
+    bio: "MSc in International Accounting & Analytics from University of Galway and B.Com from University of Delhi. 2+ years of teaching experience with 500+ students empowered. Corporate background at KPMG with expertise in CUET and CLAT preparation.",
+    specialties: ['Commerce & Accounting', 'CUET & CLAT Prep', 'Corporate Finance'],
   },
 ];
 
@@ -247,8 +253,9 @@ export default function AboutPage() {
               Experienced educators dedicated to building conceptual clarity and academic excellence.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member) => (
+          <div className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {team.slice(0, 3).map((member) => (
               <Card key={member.name} hoverable className="flex flex-col items-center text-center p-6">
                 {/* Photo */}
                 <div className="relative w-28 h-28 rounded-full overflow-hidden mb-4 shadow-lg ring-4 ring-brand-red/10 flex-shrink-0">
@@ -286,6 +293,29 @@ export default function AboutPage() {
                 </div>
               </Card>
             ))}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            {team.slice(3).map((member) => (
+              <Card key={member.name} hoverable className="flex flex-col items-center text-center p-6">
+                <div className="relative w-28 h-28 rounded-full overflow-hidden mb-4 shadow-lg ring-4 ring-brand-red/10 flex-shrink-0">
+                  <Image src={member.photo} alt={member.name} fill className="object-cover object-top" sizes="112px" />
+                </div>
+                <span className="inline-block text-xs font-semibold bg-brand-red/10 text-brand-red border border-brand-red/20 rounded-full px-3 py-1 mb-2">
+                  {member.badge}
+                </span>
+                <h3 className="text-base font-heading font-bold text-text-light dark:text-text-dark mb-0.5">{member.name}</h3>
+                <p className="text-brand-red text-xs font-semibold mb-3">{member.title}</p>
+                <p className="text-xs text-text-light/70 dark:text-text-dark/70 leading-relaxed mb-4">{member.bio}</p>
+                <div className="flex flex-wrap gap-1.5 justify-center mt-auto">
+                  {member.specialties.map((s) => (
+                    <span key={s} className="text-xs bg-gray-100 dark:bg-gray-800 text-text-light/60 dark:text-text-dark/60 rounded-full px-2.5 py-1">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </Card>
+            ))}
+          </div>
           </div>
         </Container>
       </section>

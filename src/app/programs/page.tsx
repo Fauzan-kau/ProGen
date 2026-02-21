@@ -18,12 +18,10 @@ export const metadata: Metadata = {
     title: 'Programs | ProGen',
     description: 'CBSE Tuition, NEET & JEE Preparation, and Coding programs in Riyadh, Saudi Arabia.',
     url: 'https://www.progenksa.com/programs',
-    images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: 'ProGen Programs' }],
   },
   twitter: {
     title: 'Programs | ProGen',
     description: 'CBSE Tuition, NEET & JEE Preparation, and Coding programs in Riyadh, Saudi Arabia.',
-    images: ['/images/og-image.png'],
   },
 };
 

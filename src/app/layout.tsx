@@ -36,20 +36,11 @@ export const metadata: Metadata = {
     title: 'ProGen — Where Education Becomes a Career Strategy',
     description:
       "Saudi Arabia's premier career-focused academy. We don't just teach subjects — we architect futures.",
-    images: [
-      {
-        url: '/images/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'ProGen Academy — Saudi Arabia',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ProGen — Where Education Becomes a Career Strategy',
     description: "Saudi Arabia's premier career-focused academy. We architect futures.",
-    images: ['/images/og-image.png'],
   },
   robots: {
     index: true,
@@ -63,6 +54,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.progenksa.com',
   },
+  // TODO: Add after deploying → go to search.google.com/search-console → Add property → get code → paste below
+  // verification: {
+  //   google: 'PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE',
+  // },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -87,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 "Saudi Arabia's premier career-focused academy bridging the gap between school education and professional excellence, aligned with Vision 2030.",
               url: 'https://www.progenksa.com',
               logo: 'https://www.progenksa.com/images/logo-primary.png',
-              image: 'https://www.progenksa.com/images/og-image.png',
+              image: 'https://www.progenksa.com/opengraph-image',
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: 'Abi Talib Ibn Abduljabbar, Al Murabba Dist., P.O. Box 12612',

@@ -18,12 +18,10 @@ export const metadata: Metadata = {
     title: 'ProGen — Where Education Becomes a Career Strategy',
     description: "Saudi Arabia's premier career-focused academy. CBSE, NEET & JEE, and Coding programs in Riyadh.",
     url: 'https://www.progenksa.com',
-    images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: 'ProGen Academy' }],
   },
   twitter: {
     title: 'ProGen — Where Education Becomes a Career Strategy',
     description: "Saudi Arabia's premier career-focused academy. CBSE, NEET & JEE, and Coding programs in Riyadh.",
-    images: ['/images/og-image.png'],
   },
 };
 

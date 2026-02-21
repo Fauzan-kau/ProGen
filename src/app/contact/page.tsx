@@ -17,12 +17,10 @@ export const metadata: Metadata = {
     title: 'Contact Us | ProGen',
     description: 'Get in touch with ProGen Academy in Riyadh. Enroll in a free demo session today.',
     url: 'https://www.progenksa.com/contact',
-    images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: 'Contact ProGen' }],
   },
   twitter: {
     title: 'Contact Us | ProGen',
     description: 'Get in touch with ProGen Academy in Riyadh. Enroll in a free demo session today.',
-    images: ['/images/og-image.png'],
   },
 };
 

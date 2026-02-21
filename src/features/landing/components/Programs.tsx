@@ -32,7 +32,7 @@ const programs: Program[] = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0-6l-3.5 2.5M12 20l-9-5" />
       </svg>
     ),
-    image: '/images/tutor.jpg',
+    image: '/images/tutor.png',
     title: 'CBSE Tuition Program',
     subtitle: 'Class 8–12',
     description:
