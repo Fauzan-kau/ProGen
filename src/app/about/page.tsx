@@ -89,7 +89,7 @@ const team = [
   },
   {
     photo: '/images/nafiya.jpeg',
-    name: 'Nafiya',
+    name: 'Mariyam Nafla',
     title: 'Mathematics Faculty',
     badge: 'Mathematics',
     bio: "MSc in Mathematics from Jamia Millia Islamia and former Assistant Professor at WIRAS College, Kannur. Teaches across online and offline platforms with a focus on conceptual clarity and logical problem-solving.",
